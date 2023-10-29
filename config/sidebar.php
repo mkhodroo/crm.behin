@@ -6,7 +6,7 @@ return [
         'dashboard' => [
             'fa_name' => 'داشبرد',
             'submenu' => [
-                'dashboard' => [ 'fa_name' => 'داشبرد', 'route-name' => '', 'route-url' => 'admin' ],
+                'dashboard' => [ 'fa_name' => 'داشبرد', 'route-name' => '', 'route-url' => 'dashboard' ],
             ]
         ],
         'cases' => [
@@ -38,7 +38,7 @@ return [
         'users' => [
             'fa_name' => 'کاربران',
             'submenu' => [
-                'dashboard' => [ 'fa_name' => 'همه', 'route-name' => '', 'route-url' => 'admin/user/all' ],
+                'all' => [ 'fa_name' => 'همه', 'route-name' => '', 'route-url' => 'admin/user/all' ],
                 'role' => [ 'fa_name' => 'نقش ها', 'route-name' => 'role.listForm', 'route-url' => '' ],
             ]
         ],

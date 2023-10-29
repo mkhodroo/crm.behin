@@ -32,19 +32,19 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
-            @foreach (config('sidebar.menu') as $menu)
-                @if (auth()->user()->access('منو >>' . $menu['fa_name']))
+            @foreach (config('sidebar.menu') as $menu_key => $menu)
+                @if (auth()->user()->access('Menu >>' . $menu_key))
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link ">
                             <i class="nav-icon fa fa-dashboard"></i>
                             <p>
-                                {{ $menu['fa_name'] }}
+                                {{ $menu_key }}
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @foreach ($menu['submenu'] as $submenu)
-                                @if (auth()->user()->access('منو >>' . $menu['fa_name'] . '>>' . $submenu['fa_name']))
+                            @foreach ($menu['submenu'] as $submenu_key => $submenu)
+                                @if (auth()->user()->access('Menu >>' . $menu_key . '>>' . $submenu_key))
                                     <li class="nav-item">
                                         <a @isset($submenu['target']) target="{{ $submenu['target'] }}" @endisset
                                             href="@if (Route::has($submenu['route-name'])) {{ route($submenu['route-name']) }} 
@@ -52,9 +52,9 @@
                                             {{ $submenu['static-url'] }}
                                         @else
                                             {{ url($submenu['route-url']) }} @endif"
-                                            class="nav-link active">
+                                            class="nav-link ">
                                             <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>{{ $submenu['fa_name'] }}</p>
+                                            <p>{{ $submenu_key }}</p>
                                         </a>
                                     </li>
                                 @endif
