@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url('public/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('public/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 
 <body class="hold-transition login-page">
@@ -29,6 +31,13 @@
     <script src="{{ url('public/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('public/dist/js/adminlte.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ url('public/js/ajax.js') }}"></script>
+    <script src="{{ url('public/js/dataTable.js') }}"></script>
+    <script src="{{ url('public/js/loader.js') }}"></script>
+    <script src="{{ url('public/js/scripts.js') }}"></script>
+
+    @yield('script')
 </body>
 
 </html>
