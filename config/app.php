@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        \Mkhodroo\UserRoles\UserRolesServiceProvider::class,
         /*
          * Application Service Providers...
          */
