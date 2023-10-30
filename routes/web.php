@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/test', function () {
+    $d= scandir(__DIR__ . '/../vendor');
+    foreach($d as $d){
+        echo '/vendor/'.$d . '<br>';
+    }
+});
 
 Route::get('/', function () {
     return view('auth.login');
