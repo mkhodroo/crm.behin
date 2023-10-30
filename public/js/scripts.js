@@ -1,6 +1,6 @@
 function show_error(er){
     if(er.status == 403){
-        toastr.error("دسترسی ندارید")
+        toastr.error("Forbidden")
     }
     if(er.responseJSON){
         toastr.error(er.responseJSON.message)
@@ -16,7 +16,7 @@ function show_error(er){
     hide_loading();
 }
 
-function show_message(msg = "انجام شد" ){
+function show_message(msg = "Done" ){
     toastr.success(msg);
 }
 
