@@ -37,13 +37,3 @@ yarn-error.log
 /vendor/mockery
 /vendor/monolog
 /vendor/myclabs
-/vendor/nesbot
-/vendor/nette
-/vendor/nikic
-/vendor/nunomaduro
-/vendor/phar-io
-/vendor/phpoption
-/vendor/phpunit
-/vendor/psr
-/vendor/psy
-/vendor/ralouphie
