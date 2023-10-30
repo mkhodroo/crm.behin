@@ -160,6 +160,9 @@ return [
          * Package Service Providers...
          */
         \Mkhodroo\UserRoles\UserRolesServiceProvider::class,
+        \Mkhodroo\AgencyInfo\AgencyInfoProvider::class,
+        \Mkhodroo\Cities\CityProvider::class,
+        \Mkhodroo\DateConvertor\DateConvertorProvider::class,
         /*
          * Application Service Providers...
          */

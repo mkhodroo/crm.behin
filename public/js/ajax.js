@@ -78,6 +78,36 @@ function send_ajax_request_with_confirm(url, data, callback, erCallback = null, 
     }
 }
 
+function send_ajax_formdata_request_with_confirm(url, data, callback, erCallback = null, message = "Are you sure?"){
+    if (confirm(message) == true) {
+        show_loading()
+        if(erCallback == null){
+            erCallback= function(data){ 
+                hide_loading();
+                show_error(data)
+            }
+        }
+        return $.ajax({
+            url: url,
+            data: data,
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'post',
+            success: function(){
+                hide_loading();
+            },
+            error: erCallback
+            })
+            .done(callback);
+    } else {
+        return false;
+    }
+}
+
 function send_ajax_get_request(url, callback, erCallback = null){
     show_loading()
     if(erCallback == null){
@@ -139,8 +169,8 @@ function hide_loading(){
     $('#preloader').hide();
 }
 
-function open_admin_modal(url, title = ''){
-    var modal = $('<div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+function open_admin_modal(url, title = '', customFun = null){
+    var modal = $('<div class="modal fade" id="admin-modal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
                     '<div class="modal-dialog modal-lg">' +
                     '<div class="modal-content">' +
                     '<div class="modal-body" id="modal-body">' +
@@ -165,12 +195,15 @@ function open_admin_modal(url, title = ''){
         function(data){
             $('#admin-modal #modal-body').html(data);
             $('#admin-modal').modal('show')
+            if(customFun){
+                customFun()
+            }
         }
     )
 }
 
 function open_admin_modal_with_data(data, title = '', customFun = null){
-    var modal = $('<div class="modal fade" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+    var modal = $('<div class="modal fade" id="admin-modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
                     '<div class="modal-dialog modal-lg">' +
                     '<div class="modal-content">' +
                     '<div class="modal-body" id="modal-body">' +
@@ -192,10 +225,6 @@ function open_admin_modal_with_data(data, title = '', customFun = null){
     $('#admin-modal #modal-body').html(data);
     $('#admin-modal').modal('show')
     setTimeout(customFun(), 1000);
-}
-
-function close_admin_modal(){
-    $('#admin-modal').modal('hide');
 }
 
 
